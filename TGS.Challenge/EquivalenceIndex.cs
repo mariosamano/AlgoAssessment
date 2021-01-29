@@ -12,7 +12,7 @@ namespace TGS.Challenge
        If no index exists then output -1
 
        There are accompanying unit tests for this exercise, ensure all tests pass & make
-        sure the unit tests are correct too.
+        sure the unit tests are correct too.º
      */
 
     public class EquivalenceIndex

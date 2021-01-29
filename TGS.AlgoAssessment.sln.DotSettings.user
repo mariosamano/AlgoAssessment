@@ -1,0 +1,11 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=48d74947_002Dd984_002D4e9d_002Da44b_002Dddd09ab1a046/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AnagramTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::9CC3DDCA-5853-4AFE-9BE2-92EC3317E6FC::.NETCoreApp,Version=v3.1::TGS.Challenge.Tests.AnagramTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f37dc9cf_002D5cf3_002D4c0a_002Db6ed_002Df3f10b6a8744/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Word1_IsRequired" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::9CC3DDCA-5853-4AFE-9BE2-92EC3317E6FC::.NETCoreApp,Version=v3.1::TGS.Challenge.Tests.AnagramTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
