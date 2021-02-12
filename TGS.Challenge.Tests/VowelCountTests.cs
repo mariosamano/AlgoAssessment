@@ -19,6 +19,12 @@ namespace TGS.Challenge.Tests
         }
 
         [Fact]
+        public void ValueIsNull_IsRequired()
+        {
+            Assert.Throws<ArgumentException>(() => _vowelCount.Count(null));
+        }
+
+        [Fact]
         public void AEIOU_Returns_Correct_Count()
         {
             var count = _vowelCount.Count("AEIOU");
@@ -50,6 +56,22 @@ namespace TGS.Challenge.Tests
             var count = _vowelCount.Count("How many can you find");
 
             Assert.Equal(count, 6);
+        }
+
+        [Fact]
+        public void AaEeIiOoUu_Returns_Correct_Count()
+        {
+            var count = _vowelCount.Count("AaEeIiOoUu");
+
+            Assert.Equal(count, 10);
+        }
+
+        [Fact]
+        public void symbols_Returns_Correct_Count()
+        {
+            var count = _vowelCount.Count("&/(&(&%·(()//&%$··$$·%$");
+
+            Assert.Equal(count, 0);
         }
     }
 }
