@@ -24,6 +24,14 @@ namespace TGS.Challenge.Tests
         }
 
         [Fact]
+        public void Value_0_Returns_ValidString()
+        {
+            var formatted = _formatNumber.Format(0);
+
+            Assert.Equal("0", formatted);
+        }
+
+        [Fact]
         public void Value_1_Returns_ValidString()
         {
             var formatted = _formatNumber.Format(1);
@@ -79,6 +87,16 @@ namespace TGS.Challenge.Tests
 
             Assert.Equal("1,000,000", formatted);
         }
+
+        [Fact]
+        public void Value_1000000000_Returns_ValidString()
+        {
+            var formatted = _formatNumber.Format(1000000000);
+
+            Assert.Equal("1,000,000,000", formatted);
+        }
+
+        
 
         [Fact]
         public void Value_35235235_Returns_ValidString()

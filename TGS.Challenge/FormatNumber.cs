@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace TGS.Challenge
 {
@@ -23,6 +26,9 @@ namespace TGS.Challenge
         There are accompanying unit tests for this exercise, ensure all tests pass & make
         sure the unit tests are correct too.
      */
+
+
+
     public class FormatNumber
     {
         public string Format(int value)
@@ -38,28 +44,24 @@ namespace TGS.Challenge
             }
 
             var valueString = value.ToString();
-            var previousResult = new StringBuilder();
-            var result = new StringBuilder();
-            var count = 0;
-            for (int i = valueString.Length - 1; i >= 0; i--)
+            var result = String.Empty;
+            var symbol = ",";
+            var length = 3;
+            for (int i = 1; i <= (valueString.Length / 3) + 1; i++)
             {
-                if (count == 3)
+                var index = valueString.Length - (i * 3);
+                //First digits step ie 1 from 1000
+                if (index <= 0)
                 {
-                    previousResult.Append(",");
-                    count = 0;
+                    length = index + 3;
+                    index = 0;
+                    symbol = String.Empty;
                 }
 
-                previousResult.Append(valueString[i]);
-                count++;
+                result = $"{symbol}{valueString.Substring(index, length)}{result}";
             }
 
-            var formattedString = previousResult.ToString();
-            for (int i = formattedString.Length - 1; i >= 0; i--)
-            {
-                result.Append(formattedString[i]);
-            }
-
-            return result.ToString();
+            return result;
         }
     }
 }
