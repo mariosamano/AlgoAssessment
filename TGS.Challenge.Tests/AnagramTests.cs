@@ -13,17 +13,20 @@ namespace TGS.Challenge.Tests
         }
 
         //Adding more tests
-
         [Fact]
         public void Word1_IPunctuation()
         {
-            Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams("???", "ABC"));
+            var result = _anagram.AreAnagrams("???", "ABC");
+
+            Assert.False(result);
         }
 
         [Fact]
         public void Word2_IPunctuation()
         {
-            Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams("ABC", "?? ??"));
+            var result = _anagram.AreAnagrams("ABC", "?? ??");
+
+            Assert.False(result);
         }
 
         [Fact]
@@ -48,11 +51,31 @@ namespace TGS.Challenge.Tests
         }
 
         [Fact]
+        public void Word1Null_IsRequired()
+        {
+            Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams(null, "ABC"));
+        }
+
+        [Fact]
+        public void Word2Null_IsRequired()
+        {
+            Assert.Throws<ArgumentException>(() => _anagram.AreAnagrams("ABC", null));
+        }
+
+        [Fact]
         public void Dormitory_IsAnagram_Dirty_room()
         {
             var result = _anagram.AreAnagrams("Dormitory", "Dirty_room");
 
             Assert.True(result);
+        }
+
+        [Fact]
+        public void Numbers_IsNotAnagram_Dirty3434room()
+        {
+            var result = _anagram.AreAnagrams("234521324324235235325", "Dirty3434room");
+
+            Assert.False(result);
         }
 
         [Fact]
@@ -87,6 +110,22 @@ namespace TGS.Challenge.Tests
             var result = _anagram.AreAnagrams("Funeral", "Real fun");
 
             Assert.True(result);
+        }
+
+        [Fact]
+        public void dormitory_IsAnagram_DORMITORY()
+        {
+            var result = _anagram.AreAnagrams("dormitory", "DORMITORY");
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void dormitory_IsNotAnagram_DORMITORYY()
+        {
+            var result = _anagram.AreAnagrams("dormitory", "DORMITORYY");
+
+            Assert.False(result);
         }
     }
 }

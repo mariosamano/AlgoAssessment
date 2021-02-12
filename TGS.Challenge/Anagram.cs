@@ -26,61 +26,45 @@ namespace TGS.Challenge
        */
     public class Anagram
     {
+        private Dictionary<char, int> tracker;
+        private void TrackLetterCount(char letter, int count)
+        {
+            if (!char.IsLetter(letter) || letter == ' ')
+                return;
+
+            if (!tracker.ContainsKey(letter))
+            {
+                tracker.Add(letter, count);
+            }
+            else
+            {
+                tracker[letter] = tracker[letter] + count;
+            }
+        }
+
         public bool AreAnagrams(string word1, string word2)
         {
+            tracker = new Dictionary<char, int>();
             if (String.IsNullOrEmpty(word1) || String.IsNullOrEmpty(word2))
             {
                 throw new ArgumentException("Invalid entry");
             }
 
-            var validation = new Dictionary<char, int>();
-            foreach (var word in word1.Trim().ToLowerInvariant())
+            var maxLength = Math.Max(word1.Length, word2.Length);
+            for (int i = 0; i < maxLength; i++)
             {
-                if (!char.IsLetter(word))
+                if (i < word1.Length)
                 {
-                    continue;
+                    TrackLetterCount(char.ToLower(word1[i]), 1);
                 }
 
-                if (!validation.ContainsKey(word))
+                if (i < word2.Length)
                 {
-                    validation.Add(word, 1);
-                }
-                else
-                {
-                    validation[word] = validation[word] + 1;
+                    TrackLetterCount(char.ToLower(word2[i]), -1);
                 }
             }
 
-            if (validation.Count == 0)
-            {
-                throw new ArgumentException("Invalid entry");
-            }
-
-            bool hasValidCharacters = false;
-            foreach (var word in word2.Trim().ToLowerInvariant())
-            {
-                if (!char.IsLetter(word))
-                {
-                    continue;
-                }
-
-                hasValidCharacters = true;
-                if (!validation.ContainsKey(word))
-                {
-                    return false;
-                }
-                else
-                {
-                    validation[word] = validation[word] - 1;
-                }
-            }
-
-            if (!hasValidCharacters)
-            {
-                throw new ArgumentException("Invalid entry");
-            }
-
-            return validation.All(x => x.Value == 0); ;
+            return tracker.All(x => x.Value == 0); ;
         }
     }
 }
